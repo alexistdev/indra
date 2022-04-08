@@ -36,6 +36,11 @@
                         Dashboard
                     </a>
 
+					<a class="nav-link" href="<?= base_url('pimpinan/grafik'); ?>">
+						<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+						Grafik
+					</a>
+
                     <a class="nav-link" href="<?= base_url('pimpinan/riwayat'); ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-history"></i></div>
                         Riwayat Penjualan
