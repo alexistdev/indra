@@ -5,7 +5,12 @@
                 <?php echo $this->session->flashdata('message'); ?>
                 <div class="card-header"><h3 class="text-center font-weight-light my-4"><?= $header ?> dan Reset Password</h3></div>
                 <div class="card-body">
-                    <form action="<?= base_url('setting') ?>" method="post"; ?>
+                    <form action="<?= base_url('setting') ?>" method="post">
+						<div class="form-group">
+							<label class="small mb-1" for="passwordOld">Password Lama</label>
+							<input name="passwordOld" class="form-control py-4" id="passwordOld" type="password" placeholder="Enter old password" required/>
+							<?php echo form_error('passwordOld', '<div class="error alert-danger">', '</div>'); ?>
+						</div>
                         <div class="form-group">
                             <label class="small mb-1" for="password">password</label>
                             <input name="password" class="form-control py-4" id="password" type="password" placeholder="Enter password" />

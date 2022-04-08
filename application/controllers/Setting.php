@@ -14,7 +14,12 @@ class Setting extends CI_Controller {
         if (!$this->session->userdata('username')) {
 			redirect('auth');
 		}
-
+		$this->form_validation->set_rules('passwordOld', 'Password', 'required|min_length[3]',
+			[
+				'required' => 'password tidak kosong!',
+				'min_length' => 'minimal 6 karakter',
+			]
+		);
         
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|matches[password2]', 
             [

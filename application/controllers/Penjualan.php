@@ -14,8 +14,8 @@ class Penjualan extends CI_Controller {
 			redirect('auth');
 		}
         $this->form_validation->set_rules(
-            'harga', 
-            'harga', 
+            'merkId',
+            'merkId',
             'required|numeric',
             [
                 'required' => 'field tidak kosong!',
@@ -61,7 +61,6 @@ class Penjualan extends CI_Controller {
                 'produkId' => $produkId,
                 'merkId' => htmlspecialchars($this->input->post('merkId')),
                 'tgl_penjualan' => time(),
-                'harga' => htmlspecialchars($this->input->post('harga')),
             ];
             $this->mmodel->addPenjualan($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');

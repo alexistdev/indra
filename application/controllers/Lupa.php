@@ -63,10 +63,10 @@ class Lupa extends CI_Controller
 			$to = $email;
 			$subject = "Reset Password";
 			$message = "
-               Anda baru saja melakukan reset password<br>
-               Silahkan klik link berikut untuk mengganti password anda:<br>
-               ". base_url('lupa_password/'.$kode)."
-               Regards<br>
+               Anda baru saja melakukan reset password
+               Silahkan klik link berikut untuk mengganti password anda:
+               ". base_url('lupa_password/'.$kode)." 
+               Regards
                Admin
       		";
 

@@ -44,11 +44,7 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="harga">Harga</label>
-                            <input name="harga" type="number" class="form-control" id="harga" placeholder="input harga..." required>
-                            <?php echo form_error('harga', '<div class="error alert-danger">', '</div>'); ?>
-                        </div>
+
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
