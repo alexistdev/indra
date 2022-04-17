@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jan 2022 pada 11.23
--- Versi server: 10.4.18-MariaDB
--- Versi PHP: 8.0.3
+-- Generation Time: Apr 17, 2022 at 11:55 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tokoa`
+-- Database: `indra`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -33,7 +33,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `kategori`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `kategori` (`id`, `kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `merk`
+-- Table structure for table `merk`
 --
 
 CREATE TABLE `merk` (
@@ -59,7 +59,7 @@ CREATE TABLE `merk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `merk`
+-- Dumping data for table `merk`
 --
 
 INSERT INTO `merk` (`id`, `merk`) VALUES
@@ -93,7 +93,7 @@ INSERT INTO `merk` (`id`, `merk`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjualan`
+-- Table structure for table `penjualan`
 --
 
 CREATE TABLE `penjualan` (
@@ -106,7 +106,7 @@ CREATE TABLE `penjualan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `penjualan`
+-- Dumping data for table `penjualan`
 --
 
 INSERT INTO `penjualan` (`id`, `kategoriId`, `produkId`, `merkId`, `sizeId`, `tgl_penjualan`) VALUES
@@ -6184,12 +6184,13 @@ INSERT INTO `penjualan` (`id`, `kategoriId`, `produkId`, `merkId`, `sizeId`, `tg
 (6070, 5, 44, 35, 9, 1640304548),
 (6071, 8, 76, 36, 11, 1640304548),
 (6072, 5, 43, 35, 7, 1640304548),
-(6073, 9, 90, 50, 30, 1640304548);
+(6073, 9, 90, 50, 30, 1640304548),
+(6074, 5, 40, 35, 0, 1649431180);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
@@ -6204,7 +6205,7 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `produk`
+-- Dumping data for table `produk`
 --
 
 INSERT INTO `produk` (`id`, `kategoriId`, `merkId`, `sizeId`, `kode_produk`, `type`, `harga`, `stok`) VALUES
@@ -6224,7 +6225,7 @@ INSERT INTO `produk` (`id`, `kategoriId`, `merkId`, `sizeId`, `kode_produk`, `ty
 (36, 5, 44, 7, 'BRG14', 'SR8899', 1000000, 12),
 (37, 5, 38, 9, 'BRG15', '899', 1500000, 26),
 (38, 5, 38, 24, 'BRG16', '899', 2100000, 38),
-(40, 5, 35, 24, 'BRG18', 'Champion', 2000000, 22),
+(40, 5, 35, 24, 'BRG18', 'Champion', 2000000, 21),
 (41, 5, 35, 7, 'BRG19', 'Thypoon', 2500000, 43),
 (42, 5, 35, 7, 'BRG20', 'HT8871UKM', 1600000, 24),
 (43, 5, 35, 7, 'BRG21', 'HT8870UKM', 1500000, 18),
@@ -6287,7 +6288,7 @@ INSERT INTO `produk` (`id`, `kategoriId`, `merkId`, `sizeId`, `kode_produk`, `ty
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `size`
+-- Table structure for table `size`
 --
 
 CREATE TABLE `size` (
@@ -6296,7 +6297,7 @@ CREATE TABLE `size` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `size`
+-- Dumping data for table `size`
 --
 
 INSERT INTO `size` (`id`, `size`) VALUES
@@ -6329,100 +6330,102 @@ INSERT INTO `size` (`id`, `size`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `rule` int(11) NOT NULL
+  `email` varchar(125) NOT NULL,
+  `rule` int(11) NOT NULL,
+  `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `rule`) VALUES
-(1, 'admin', '$2y$10$xRv63ROFDxIV7pyV4qQeLuFsmAQzGUEfkj/nd99Wkn3RI4bkvkYQC', 2),
-(2, 'pimpinan', '$2y$10$JQpD0i.iiK43AMycLrV5F.hvXkHpjz7WrudqRJLWeCbPB4qKtRL0C', 1);
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `rule`, `token`) VALUES
+(1, 'admin', '$2y$10$cqVCNjuIlyEVLq.0YPTZXOlz7kZiDt7OndyIHZ7wMWuva5OGc0ySC', 'alexistdev@gmail.com', 2, ''),
+(2, 'pimpinan', '$2y$10$JQpD0i.iiK43AMycLrV5F.hvXkHpjz7WrudqRJLWeCbPB4qKtRL0C', 'Wijayaindra555@gmail.com', 1, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `merk`
+-- Indexes for table `merk`
 --
 ALTER TABLE `merk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `penjualan`
+-- Indexes for table `penjualan`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `size`
+-- Indexes for table `size`
 --
 ALTER TABLE `size`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `merk`
+-- AUTO_INCREMENT for table `merk`
 --
 ALTER TABLE `merk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT untuk tabel `penjualan`
+-- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6074;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6075;
 
 --
--- AUTO_INCREMENT untuk tabel `produk`
+-- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
--- AUTO_INCREMENT untuk tabel `size`
+-- AUTO_INCREMENT for table `size`
 --
 ALTER TABLE `size`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
